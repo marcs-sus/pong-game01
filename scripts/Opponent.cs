@@ -10,8 +10,14 @@ public partial class Opponent : CharacterBody2D
 
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		Vector2 velocity = Velocity;
 
+		if (Input.IsKeyPressed(Key.U))
+			velocity.Y = -OpponentSpeed;
+
+		Velocity = velocity;
+		MoveAndSlide();
 	}
 }

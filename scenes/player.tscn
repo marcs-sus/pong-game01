@@ -15,5 +15,6 @@ PlayerSpeed = 500.0
 shape = SubResource("RectangleShape2D_tbq3v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_c1oqh")

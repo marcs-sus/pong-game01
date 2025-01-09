@@ -1,30 +1,60 @@
 using Godot;
 using System;
 
-public partial class Ball : RigidBody2D
+public partial class Ball : CharacterBody2D
 {
-	[Export] public float DefaultSpeed = 300.0f;
-	[Export] public float Acceleration = 50.0f;
-
-	public Vector2 direction = Vector2.Left.Normalized(); //Left as debug - TODO
+	[Export] public float DefaultSpeed = 10.0f;
+	[Export] public float Acceleration = 1.0f;
+	[Export] public int RandomAngle = 5;
 	private float BallSpeed;
+
+	Random random = new Random();
 
 	public override void _Ready()
 	{
 		BallSpeed = DefaultSpeed;
+
+		if (random.Next(0, 2) == 0)
+			Velocity = new Vector2(BallSpeed, 0);
+		else
+			Velocity = new Vector2(-BallSpeed, 0);
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
-		BallSpeed += (float)delta * 2;
+		KinematicCollision2D collision = MoveAndCollide(Velocity);
 
-		Position += direction * BallSpeed * (float)delta;
+		if (collision != null)
+		{
+			var normal = collision.GetNormal();
+			Velocity = Velocity.Bounce(normal);
+		}
 	}
 
-	public void _ResetBall()
+	public void _ResetBall(bool side)
 	{
-		direction = Vector2.Zero;
 		Position = Vector2.Zero;
 		BallSpeed = DefaultSpeed;
+
+		if (side)
+			Velocity = new Vector2(BallSpeed, random.Next(-RandomAngle, RandomAngle));
+		else if (!side)
+			Velocity = new Vector2(-BallSpeed, random.Next(-RandomAngle, RandomAngle));
+	}
+
+	private void _OnBallEnteredLeftZone(Node body)
+	{
+		_ResetBall(true);
+		GameManager gameManager = GetNode<GameManager>("%GameManager");
+		gameManager._IncrementScore(true);
+		GD.Print("Ball entered left dead zone");
+	}
+
+	private void _OnBallEnteredRightZone(Node body)
+	{
+		_ResetBall(false);
+		GameManager gameManager = GetNode<GameManager>("%GameManager");
+		gameManager._IncrementScore(false);
+		GD.Print("Ball entered right dead zone");
 	}
 }
