@@ -3,12 +3,13 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] public float PlayerSpeed = 300.0f;
+	[Export] public float PlayerSpeed = 500.0f;
 
 	public override void _Ready()
 	{
 
 	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;

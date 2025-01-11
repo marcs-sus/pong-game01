@@ -37,18 +37,12 @@ zoom = Vector2(0.6, 0.6)
 [node name="Scenario" type="Node" parent="."]
 
 [node name="Background" type="ColorRect" parent="Scenario"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1536.0
-offset_top = -864.0
-offset_right = 384.0
-offset_bottom = 216.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Line2D" type="Line2D" parent="Scenario"]
 texture_repeat = 2
@@ -57,42 +51,53 @@ width = 15.0
 texture = ExtResource("1_gx7pq")
 texture_mode = 1
 
-[node name="PlayerScore" type="Label" parent="Scenario"]
-offset_left = -480.0
-offset_top = -464.0
-offset_right = -380.0
-offset_bottom = -364.0
+[node name="Control" type="Control" parent="Scenario"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -460.0
+offset_right = 1.0
+offset_bottom = -459.0
+
+[node name="PlayerScore" type="Label" parent="Scenario/Control"]
+layout_mode = 0
+offset_left = -525.0
+offset_right = -435.0
+offset_bottom = 80.0
+pivot_offset = Vector2(45, 40)
 size_flags_horizontal = 4
 text = "00"
 label_settings = SubResource("LabelSettings_6fwni")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_mnxvr")
+metadata/_edit_use_anchors_ = true
 
-[node name="OpponentScore" type="Label" parent="Scenario"]
-offset_left = 480.0
-offset_top = -464.0
-offset_right = 580.0
-offset_bottom = -364.0
+[node name="OpponentScore" type="Label" parent="Scenario/Control"]
+layout_mode = 0
+offset_left = 435.0
+offset_right = 525.0
+offset_bottom = 80.0
+pivot_offset = Vector2(45, 40)
 size_flags_horizontal = 4
 text = "00"
 label_settings = SubResource("LabelSettings_6fwni")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_klkr2")
+metadata/_edit_use_anchors_ = true
 
 [node name="DeadZones" type="Node" parent="."]
 
 [node name="LeftDeadZone" type="Area2D" parent="DeadZones"]
+position = Vector2(-1300, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZones/LeftDeadZone"]
-position = Vector2(-1300, 0)
 shape = SubResource("SegmentShape2D_fmmgt")
 
 [node name="RightDeadZone" type="Area2D" parent="DeadZones"]
+position = Vector2(1300, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZones/RightDeadZone"]
-position = Vector2(1300, 0)
 rotation = 3.14159
 shape = SubResource("SegmentShape2D_f6gb4")
 
@@ -107,14 +112,13 @@ position = Vector2(0, 540)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_o6ufw")
 
-[node name="Player" parent="." instance=ExtResource("1_o31sg")]
+[node name="Player" parent="." groups=["Paddle"] instance=ExtResource("1_o31sg")]
 position = Vector2(-800, 1)
 
-[node name="Opponent" parent="." instance=ExtResource("2_d7k0b")]
+[node name="Opponent" parent="." groups=["Paddle"] instance=ExtResource("2_d7k0b")]
 position = Vector2(800, 0)
 
 [node name="Ball" parent="." instance=ExtResource("4_6nnk7")]
-DefaultSpeed = 20.0
 
 [connection signal="body_entered" from="DeadZones/LeftDeadZone" to="Ball" method="_OnBallEnteredLeftZone"]
 [connection signal="body_entered" from="DeadZones/RightDeadZone" to="Ball" method="_OnBallEnteredRightZone"]

@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhpoft0747eql"]
+[gd_scene load_steps=5 format=3 uid="uid://bhpoft0747eql"]
 
 [ext_resource type="Script" path="res://scripts/Ball.cs" id="1_8vy5j"]
 [ext_resource type="Texture2D" uid="uid://d4mcxnan2a1pp" path="res://assets/sprites/ball.png" id="1_x3sep"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nwxxe"]
-radius = 34.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tyaa3"]
+size = Vector2(67, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltm14"]
+size = Vector2(75, 75)
 
 [node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_8vy5j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nwxxe")
+shape = SubResource("RectangleShape2D_tyaa3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
@@ -20,4 +23,6 @@ texture = ExtResource("1_x3sep")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_nwxxe")
+shape = SubResource("RectangleShape2D_ltm14")
+
+[connection signal="body_entered" from="Area2D" to="." method="_OnBallBouncedPaddle"]
