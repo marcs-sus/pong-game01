@@ -7,8 +7,8 @@ public partial class Ball : CharacterBody2D
 	[Export] public float Acceleration = 1.0f;
 	[Export] public float MaxSpeed = 150.0f;
 	[Export] public int RandomAngle = 5;
-	private float BallSpeed;
 
+	private float BallSpeed;
 	Random random = new Random();
 
 	public override void _Ready()
@@ -49,7 +49,7 @@ public partial class Ball : CharacterBody2D
 			Velocity = new Vector2(-BallSpeed, angle).Normalized() * BallSpeed;
 	}
 
-	private void _OnBallEnteredLeftZone(Node body)
+	private void _OnBallEnteredLeftZone(Node2D body)
 	{
 		if (body is Ball)
 		{
@@ -60,7 +60,7 @@ public partial class Ball : CharacterBody2D
 		}
 	}
 
-	private void _OnBallEnteredRightZone(Node body)
+	private void _OnBallEnteredRightZone(Node2D body)
 	{
 		if (body is Ball)
 		{
@@ -71,12 +71,18 @@ public partial class Ball : CharacterBody2D
 		}
 	}
 
-	private void _OnBallBouncedPaddle(Node body)
+	private void _OnBallBouncedPaddle(Node2D body)
 	{
 		if (body.IsInGroup("Paddle"))
 		{
 			BallSpeed = Mathf.Min(BallSpeed + Acceleration, MaxSpeed);
-			// GD.Print($"Ball bounced paddle. Speed: {BallSpeed}");
+
+			float paddleSize = body.GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.Y;
+
+			float offset = (Position.Y - body.Position.Y) / (paddleSize / 2);
+			offset = Mathf.Clamp(offset, -1.0f, 1.0f);
+
+			Velocity = new Vector2(-Velocity.X, Velocity.Y + offset * 4.0f).Normalized() * BallSpeed;
 		}
 	}
 }

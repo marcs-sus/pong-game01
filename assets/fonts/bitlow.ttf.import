@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://xvlwgijelyiw"
-path="res://.godot/imported/Minecraft.ttf-e1845dfc080db589cd29d952a380f38e.fontdata"
+uid="uid://c5jxmlgcspt2x"
+path="res://.godot/imported/bitlow.ttf-93950c3d833671e25856168a1ae81112.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Minecraft.ttf"
-dest_files=["res://.godot/imported/Minecraft.ttf-e1845dfc080db589cd29d952a380f38e.fontdata"]
+source_file="res://assets/fonts/bitlow.ttf"
+dest_files=["res://.godot/imported/bitlow.ttf-93950c3d833671e25856168a1ae81112.fontdata"]
 
 [params]
 

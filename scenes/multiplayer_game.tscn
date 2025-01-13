@@ -1,35 +1,35 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmcjx15ujg4xg"]
+[gd_scene load_steps=13 format=3 uid="uid://cqxqwqioqisoe"]
 
-[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_1155y"]
-[ext_resource type="Texture2D" uid="uid://bgw74drt1ru2q" path="res://assets/sprites/middle_line.png" id="1_gx7pq"]
-[ext_resource type="PackedScene" uid="uid://f725cbjkhagp" path="res://scenes/player.tscn" id="1_o31sg"]
-[ext_resource type="PackedScene" uid="uid://c76xkri2nj2l5" path="res://scenes/opponent.tscn" id="2_d7k0b"]
-[ext_resource type="FontFile" uid="uid://c5jxmlgcspt2x" path="res://assets/fonts/bitlow.ttf" id="3_dy7rg"]
-[ext_resource type="PackedScene" uid="uid://bhpoft0747eql" path="res://scenes/ball.tscn" id="4_6nnk7"]
-[ext_resource type="Script" path="res://scripts/PlayerScore.cs" id="4_mnxvr"]
-[ext_resource type="Script" path="res://scripts/OpponentScore.cs" id="5_klkr2"]
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_csoby"]
+[ext_resource type="Texture2D" uid="uid://bgw74drt1ru2q" path="res://assets/sprites/middle_line.png" id="2_8711f"]
+[ext_resource type="FontFile" uid="uid://c5jxmlgcspt2x" path="res://assets/fonts/bitlow.ttf" id="3_02wvi"]
+[ext_resource type="Script" path="res://scripts/PlayerScore.cs" id="4_ablmr"]
+[ext_resource type="Script" path="res://scripts/OpponentScore.cs" id="5_l73te"]
+[ext_resource type="PackedScene" uid="uid://f725cbjkhagp" path="res://scenes/player.tscn" id="6_qaoyd"]
+[ext_resource type="PackedScene" uid="uid://bo1kec7x3y6bo" path="res://scenes/player_2.tscn" id="7_hakcw"]
+[ext_resource type="PackedScene" uid="uid://bhpoft0747eql" path="res://scenes/ball.tscn" id="8_twcej"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_6fwni"]
-font = ExtResource("3_dy7rg")
+[sub_resource type="LabelSettings" id="LabelSettings_8c0qt"]
+font = ExtResource("3_02wvi")
 font_size = 80
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_fmmgt"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hlcc4"]
 a = Vector2(0, 600)
 b = Vector2(0, -600)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_f6gb4"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_axvho"]
 a = Vector2(0, 600)
 b = Vector2(0, -600)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o6ufw"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t1kni"]
 resource_local_to_scene = true
 normal = Vector2(0, 20)
 
-[node name="Game" type="Node2D"]
+[node name="MultiplayerGame" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_1155y")
+script = ExtResource("1_csoby")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
@@ -48,7 +48,7 @@ metadata/_edit_use_anchors_ = true
 texture_repeat = 2
 points = PackedVector2Array(0, 600, 0, -600)
 width = 15.0
-texture = ExtResource("1_gx7pq")
+texture = ExtResource("2_8711f")
 texture_mode = 1
 
 [node name="Control" type="Control" parent="Scenario"]
@@ -65,12 +65,11 @@ offset_right = -435.0
 offset_bottom = 80.0
 pivot_offset = Vector2(45, 40)
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_dy7rg")
 text = "00"
-label_settings = SubResource("LabelSettings_6fwni")
+label_settings = SubResource("LabelSettings_8c0qt")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("4_mnxvr")
+script = ExtResource("4_ablmr")
 metadata/_edit_use_anchors_ = true
 
 [node name="OpponentScore" type="Label" parent="Scenario/Control"]
@@ -80,12 +79,11 @@ offset_right = 525.0
 offset_bottom = 80.0
 pivot_offset = Vector2(45, 40)
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_dy7rg")
 text = "00"
-label_settings = SubResource("LabelSettings_6fwni")
+label_settings = SubResource("LabelSettings_8c0qt")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("5_klkr2")
+script = ExtResource("5_l73te")
 metadata/_edit_use_anchors_ = true
 
 [node name="DeadZones" type="Node" parent="."]
@@ -94,36 +92,33 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-1300, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZones/LeftDeadZone"]
-shape = SubResource("SegmentShape2D_fmmgt")
+shape = SubResource("SegmentShape2D_hlcc4")
 
 [node name="RightDeadZone" type="Area2D" parent="DeadZones"]
 position = Vector2(1300, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZones/RightDeadZone"]
 rotation = 3.14159
-shape = SubResource("SegmentShape2D_f6gb4")
+shape = SubResource("SegmentShape2D_axvho")
 
 [node name="MapBorder" type="StaticBody2D" parent="."]
 
 [node name="TopBorder" type="CollisionShape2D" parent="MapBorder"]
 position = Vector2(0, -540)
-shape = SubResource("WorldBoundaryShape2D_o6ufw")
+shape = SubResource("WorldBoundaryShape2D_t1kni")
 
 [node name="BottomBorder" type="CollisionShape2D" parent="MapBorder"]
 position = Vector2(0, 540)
 rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_o6ufw")
+shape = SubResource("WorldBoundaryShape2D_t1kni")
 
-[node name="Player" parent="." groups=["Paddle"] instance=ExtResource("1_o31sg")]
+[node name="Player" parent="." groups=["Paddle"] instance=ExtResource("6_qaoyd")]
 position = Vector2(-800, 1)
 
-[node name="Opponent" parent="." groups=["Paddle"] instance=ExtResource("2_d7k0b")]
+[node name="Player2" parent="." instance=ExtResource("7_hakcw")]
 position = Vector2(800, 0)
-ReactionDelay = 1.0
-ErrorMargin = 50.0
-SmoothingFactor = 1.0
 
-[node name="Ball" parent="." instance=ExtResource("4_6nnk7")]
+[node name="Ball" parent="." instance=ExtResource("8_twcej")]
 
 [connection signal="body_entered" from="DeadZones/LeftDeadZone" to="Ball" method="_OnBallEnteredLeftZone"]
 [connection signal="body_entered" from="DeadZones/RightDeadZone" to="Ball" method="_OnBallEnteredRightZone"]

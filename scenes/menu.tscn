@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1cj2k0pidoqx"]
+
+[ext_resource type="Script" path="res://scripts/Menu.cs" id="1_v2hwl"]
+[ext_resource type="Texture2D" uid="uid://bkxix0so842q3" path="res://assets/menu_background.png" id="2_yl2na"]
+[ext_resource type="FontFile" uid="uid://c5jxmlgcspt2x" path="res://assets/fonts/bitlow.ttf" id="3_4mlej"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_85lir"]
+texture = ExtResource("2_yl2na")
+modulate_color = Color(0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxtvy"]
+bg_color = Color(0.10748, 0.10748, 0.10748, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.0687982, 0.0687983, 0.0687983, 0.615686)
+shadow_size = 2
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2hwl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_85lir")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -284.0
+offset_right = 249.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_4mlej")
+theme_override_font_sizes/font_size = 86
+text = "PONG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -99.0
+offset_right = 150.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Singleplayer" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_4mlej")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxtvy")
+text = "SINGLEPLAYER"
+
+[node name="Multiplayer" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_4mlej")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxtvy")
+text = "MULTIPLAYER"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_4mlej")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxtvy")
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_4mlej")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxtvy")
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Singleplayer" to="." method="_OnSingleplayerPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Multiplayer" to="." method="_OnMultiplayerPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_OnOptionsPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_OnExitPressed"]
