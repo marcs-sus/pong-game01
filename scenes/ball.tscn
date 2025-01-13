@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhpoft0747eql"]
+[gd_scene load_steps=8 format=3 uid="uid://bhpoft0747eql"]
 
 [ext_resource type="Script" path="res://scripts/Ball.cs" id="1_8vy5j"]
 [ext_resource type="Texture2D" uid="uid://d4mcxnan2a1pp" path="res://assets/sprites/ball.png" id="1_x3sep"]
+[ext_resource type="AudioStream" uid="uid://chrnp1lpx4dai" path="res://assets/sounds/ball_hit_paddle.wav" id="3_dqsfw"]
+[ext_resource type="AudioStream" uid="uid://e3e5wewdlmb8" path="res://assets/sounds/ball_hit_wall.wav" id="4_lgtq1"]
+[ext_resource type="AudioStream" uid="uid://dx1focfinhp0d" path="res://assets/sounds/goal_scored.wav" id="5_rtvf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tyaa3"]
 size = Vector2(67, 67)
@@ -24,5 +27,17 @@ texture = ExtResource("1_x3sep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ltm14")
+
+[node name="BallHitPaddle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dqsfw")
+bus = &"SFX"
+
+[node name="BallHitWall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lgtq1")
+bus = &"SFX"
+
+[node name="GoalScored" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rtvf0")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_OnBallBouncedPaddle"]

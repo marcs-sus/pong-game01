@@ -9,10 +9,15 @@ public partial class Ball : CharacterBody2D
 	[Export] public int RandomAngle = 5;
 
 	private float BallSpeed;
+	private AudioStreamPlayer2D ballHitPaddle, ballHitWall, goalScored;
 	Random random = new Random();
 
 	public override void _Ready()
 	{
+		ballHitPaddle = GetNode<AudioStreamPlayer2D>("BallHitPaddle");
+		ballHitWall = GetNode<AudioStreamPlayer2D>("BallHitWall");
+		goalScored = GetNode<AudioStreamPlayer2D>("GoalScored");
+
 		BallSpeed = DefaultSpeed;
 		Position = Vector2.Zero;
 		Velocity = Vector2.Zero;
@@ -56,6 +61,7 @@ public partial class Ball : CharacterBody2D
 			_ResetBall(true);
 			GameManager gameManager = GetNode<GameManager>("%GameManager");
 			gameManager._IncrementScore(true);
+			goalScored.Play();
 			// GD.Print("Ball entered left dead zone");
 		}
 	}
@@ -67,6 +73,7 @@ public partial class Ball : CharacterBody2D
 			_ResetBall(false);
 			GameManager gameManager = GetNode<GameManager>("%GameManager");
 			gameManager._IncrementScore(false);
+			goalScored.Play();
 			// GD.Print("Ball entered right dead zone");
 		}
 	}
@@ -83,6 +90,12 @@ public partial class Ball : CharacterBody2D
 			offset = Mathf.Clamp(offset, -1.0f, 1.0f);
 
 			Velocity = new Vector2(-Velocity.X, Velocity.Y + offset * 4.0f).Normalized() * BallSpeed;
+
+			ballHitPaddle.Play();
+		}
+		else
+		{
+			ballHitWall.Play();
 		}
 	}
 }
