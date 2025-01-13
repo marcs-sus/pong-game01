@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerScore.cs" id="4_ablmr"]
 [ext_resource type="Script" path="res://scripts/OpponentScore.cs" id="5_l73te"]
 [ext_resource type="PackedScene" uid="uid://f725cbjkhagp" path="res://scenes/player.tscn" id="6_qaoyd"]
-[ext_resource type="PackedScene" uid="uid://bo1kec7x3y6bo" path="res://scenes/player_2.tscn" id="7_hakcw"]
+[ext_resource type="PackedScene" path="res://scenes/player_2.tscn" id="7_hakcw"]
 [ext_resource type="PackedScene" uid="uid://bhpoft0747eql" path="res://scenes/ball.tscn" id="8_twcej"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8c0qt"]

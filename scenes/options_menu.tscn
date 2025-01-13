@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsnogdmqla628"]
 
 [ext_resource type="Script" path="res://scripts/OptionsMenu.cs" id="1_7bxhr"]
-[ext_resource type="Texture2D" uid="uid://bkxix0so842q3" path="res://assets/menu_background.png" id="2_56kob"]
+[ext_resource type="Texture2D" uid="uid://bkxix0so842q3" path="res://assets/sprites/menu_background.png" id="2_56kob"]
 [ext_resource type="FontFile" uid="uid://c5jxmlgcspt2x" path="res://assets/fonts/bitlow.ttf" id="3_23jsd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlwyv"]
