@@ -5,8 +5,8 @@ public partial class Opponent : CharacterBody2D
 {
 	[Export] public float AISpeed = 500.0f;
 	[Export] public float ReactionDelay = 0.2f;
-	[Export] public float ErrorMargin = 20.0f;
-	[Export] public float DeadZone = 100.0f;
+	[Export] public float ErrorMargin = 6.0f;
+	[Export] public float DeadZone = 80.0f;
 	[Export] public float SmoothingFactor = 0.5f;
 
 	private CharacterBody2D ball;

@@ -7,6 +7,7 @@ public partial class Ball : CharacterBody2D
 	[Export] public float Acceleration = 1.0f;
 	[Export] public float MaxSpeed = 150.0f;
 	[Export] public int RandomAngle = 5;
+	[Export] public float BounceAngle = 8.5f;
 
 	private float BallSpeed;
 	private AudioStreamPlayer2D ballHitPaddle, ballHitWall, goalScored;
@@ -89,7 +90,7 @@ public partial class Ball : CharacterBody2D
 			float offset = (Position.Y - body.Position.Y) / (paddleSize / 2);
 			offset = Mathf.Clamp(offset, -1.0f, 1.0f);
 
-			Velocity = new Vector2(-Velocity.X, Velocity.Y + offset * 4.0f).Normalized() * BallSpeed;
+			Velocity = new Vector2(-Velocity.X, Velocity.Y + offset * BounceAngle).Normalized() * BallSpeed;
 
 			ballHitPaddle.Play();
 		}
