@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://bmcjx15ujg4xg"]
 
-[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_1155y"]
+[ext_resource type="Script" uid="uid://ba1x5bv0xkiuf" path="res://scripts/GameManager.cs" id="1_1155y"]
 [ext_resource type="Texture2D" uid="uid://bgw74drt1ru2q" path="res://assets/sprites/middle_line.png" id="1_gx7pq"]
 [ext_resource type="PackedScene" uid="uid://f725cbjkhagp" path="res://scenes/player.tscn" id="1_o31sg"]
 [ext_resource type="PackedScene" uid="uid://c76xkri2nj2l5" path="res://scenes/opponent.tscn" id="2_d7k0b"]
 [ext_resource type="FontFile" uid="uid://c5jxmlgcspt2x" path="res://assets/fonts/bitlow.ttf" id="3_dy7rg"]
 [ext_resource type="PackedScene" uid="uid://bhpoft0747eql" path="res://scenes/ball.tscn" id="4_6nnk7"]
-[ext_resource type="Script" path="res://scripts/PlayerScore.cs" id="4_mnxvr"]
-[ext_resource type="Script" path="res://scripts/OpponentScore.cs" id="5_klkr2"]
+[ext_resource type="Script" uid="uid://u8pqstrx3k23" path="res://scripts/PlayerScore.cs" id="4_mnxvr"]
+[ext_resource type="Script" uid="uid://cqnbjhr836ohj" path="res://scripts/OpponentScore.cs" id="5_klkr2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fwni"]
 font = ExtResource("3_dy7rg")

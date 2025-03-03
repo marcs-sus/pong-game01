@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://cqxqwqioqisoe"]
 
-[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_csoby"]
+[ext_resource type="Script" uid="uid://ba1x5bv0xkiuf" path="res://scripts/GameManager.cs" id="1_csoby"]
 [ext_resource type="Texture2D" uid="uid://bgw74drt1ru2q" path="res://assets/sprites/middle_line.png" id="2_8711f"]
 [ext_resource type="FontFile" uid="uid://c5jxmlgcspt2x" path="res://assets/fonts/bitlow.ttf" id="3_02wvi"]
-[ext_resource type="Script" path="res://scripts/PlayerScore.cs" id="4_ablmr"]
-[ext_resource type="Script" path="res://scripts/OpponentScore.cs" id="5_l73te"]
+[ext_resource type="Script" uid="uid://u8pqstrx3k23" path="res://scripts/PlayerScore.cs" id="4_ablmr"]
+[ext_resource type="Script" uid="uid://cqnbjhr836ohj" path="res://scripts/OpponentScore.cs" id="5_l73te"]
 [ext_resource type="PackedScene" uid="uid://f725cbjkhagp" path="res://scenes/player.tscn" id="6_qaoyd"]
 [ext_resource type="PackedScene" uid="uid://bo1kec7x3y6bo" path="res://scenes/player_2.tscn" id="7_hakcw"]
 [ext_resource type="PackedScene" uid="uid://bhpoft0747eql" path="res://scenes/ball.tscn" id="8_twcej"]
